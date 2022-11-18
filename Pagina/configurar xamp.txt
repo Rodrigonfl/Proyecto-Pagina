@@ -1,17 +1,14 @@
-bucar la carpeta php en la camperta de xamp
-dentro buscar el archivo php.ini
-dentro buscar mail function y cambiar el SMTP por  smtp.gmail.com
+Buscar la carpeta php en la carpeta "xampp",
+dentro buscar el archivo "php.ini"
+dentro buscar "mail function" y cambiar el "SMTP" por  "smtp.gmail.com"
 cambiar el smtp_port por 587
-en sendmail_path, quitamos el ; y agregamos comillas despues del =
-volvemos a entrar a la carpeta xamp y buscamos la caarpeta sendmail
-buscar el archivo sendmail.exe y hacer click derecho en propiedades
-en la pestaña de seguridad buscamos el nombre de objeto, seleccionamos y copiar
-lo pegamos en sendmail_pat
-dentro de la carpeta sendmail buscamos sendmail.ini
-buscamoss y modificamos smtp_server por smtp.gmail.com
+en sendmail_path, quitamos el ";" y agregamos comillas despues del "="
+volvemos a la carpeta xampp y buscamos la carpeta sendmail
+buscamos el archivo sendmail.exe y hacemos click derecho en propiedades
+en la pestaña de seguridad buscamos el nombre de objeto, seleccionamos, copiar y
+lo pegamos en sendmail_pat dentro de la carpeta sendmail buscamos sendmail.ini
+buscamos y modificamos smtp_server por smtp.gmail.com 
+buscar auth_username auth_password
 
-buscar auth_username
-auth_password
-
-gmail del bot: jaimeelbot12@gmail.com
-contraseña: holakase123
+gmail de administrador: bot1@gmail.com
+contraseña: 1234567890

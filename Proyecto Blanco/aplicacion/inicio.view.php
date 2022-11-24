@@ -39,7 +39,7 @@ permisos($permisos);
         ?>
         <br>
         <hr>
-        <p class="text-center"><strong>Integrantes GRUPO 5</strong><br><br>José Saúl Rodríguez Guardado<br>Eduardo Antonio	Ramirez Carias<br>Vladimir Alcides	Salguero Erazo</p>
+        <p class="text-center"><strong>Integrantes</strong><br><br>Rodrigo Nina Flores<br>Facundo Torrico</p>
         <br>
         </div>
 </div>

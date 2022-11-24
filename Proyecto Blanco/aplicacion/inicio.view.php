@@ -8,13 +8,13 @@ permisos($permisos);
 <html>
 <head>
 <title>Inicio | Registro de Notas</title>
-    <meta name="description" content="Registro de Notas del Centro Escolar Profesor Lennin" />
+    <meta name="description" content="Registro de Notas de la escuela Paul Groussac" />
     <link rel="stylesheet" href="css/style.css" />
 
 </head>
 <body>
 <div class="header">
-        <h1>Registro de Notas - Centro Escolar "Profe Lennin"</h1>
+        <h1>Registro de Notas - Escuela "Paul Groussac"</h1>
         <h3>Usuario:  <?php echo $_SESSION["username"] ?></h3>
 </div>
 <nav>
@@ -31,7 +31,7 @@ permisos($permisos);
 
 <div class="body">
     <div class="panel">
-           <h1 class="text-center">Centro Escolar "Profe Lennin"</h1>
+           <h1 class="text-center">Proyecto Final - Prog. Redes</h1>
         <?php
         if(isset($_GET['err'])){
             echo '<h3 class="error text-center">ERROR: Usuario no autorizado</h3>';
@@ -39,14 +39,14 @@ permisos($permisos);
         ?>
         <br>
         <hr>
-        <p class="text-center"><strong>Integrantes</strong><br><br>Rodrigo Nina Flores<br>Facundo Torrico</p>
+        <p class="text-center"><strong>Integrantes</strong><br><br>Facundo Torrico<br>Rodrigo Nina Flores</p>
         <br>
         </div>
 </div>
 
 <footer>
 
-    <p>Derechos reservados ETN26 DE 6 &copy; 2022</p>
+    <p>Derechos reservados &copy; 2022</p>
 </footer>
 
 </body>

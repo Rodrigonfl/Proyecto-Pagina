@@ -1,197 +1,276 @@
-CREATE DATABASE  IF NOT EXISTS `centroescolarbd` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `centroescolarbd`;
--- MySQL dump 10.13  Distrib 5.7.26, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1    Database: centroescolarbd
--- ------------------------------------------------------
--- Server version	5.5.5-10.4.13-MariaDB
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 24-11-2022 a las 22:32:52
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `alumnos`
+-- Base de datos: `centroescolarbd`
 --
 
-DROP TABLE IF EXISTS `alumnos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `alumnos`
+--
+
 CREATE TABLE `alumnos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `num_lista` int(11) NOT NULL,
   `nombres` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
   `genero` char(1) NOT NULL,
   `id_grado` int(11) NOT NULL,
-  `id_seccion` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_alumnos_idgrado_idx` (`id_grado`),
-  KEY `FK_alumnos_idseccion_idx` (`id_seccion`),
-  CONSTRAINT `FK_alumnos_idgrado` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_alumnos_idseccion` FOREIGN KEY (`id_seccion`) REFERENCES `secciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id_seccion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `alumnos`
+-- Volcado de datos para la tabla `alumnos`
 --
 
-LOCK TABLES `alumnos` WRITE;
-/*!40000 ALTER TABLE `alumnos` DISABLE KEYS */;
-INSERT INTO `alumnos` VALUES (3,2,'David','Salguero Erazo','M',1,1),(4,3,'Andy Vladimir','Salguero','M',1,1);
-/*!40000 ALTER TABLE `alumnos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `alumnos` (`id`, `num_lista`, `nombres`, `apellidos`, `genero`, `id_grado`, `id_seccion`) VALUES
+(3, 2, 'David', 'Salguero Erazo', 'M', 1, 1),
+(4, 3, 'Andy Vladimir', 'Salguero', 'M', 1, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `grados`
+-- Estructura de tabla para la tabla `grados`
 --
 
-DROP TABLE IF EXISTS `grados`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `grados` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `ciclo` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `ciclo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `grados`
+-- Volcado de datos para la tabla `grados`
 --
 
-LOCK TABLES `grados` WRITE;
-/*!40000 ALTER TABLE `grados` DISABLE KEYS */;
-INSERT INTO `grados` VALUES (1,'Primer Grado','I');
-/*!40000 ALTER TABLE `grados` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `grados` (`id`, `nombre`, `ciclo`) VALUES
+(1, 'Primer Grado', '2022'),
+(2, 'Segundo Grado', '2022'),
+(3, 'Tercer Grado', '2022'),
+(4, 'Cuarto Grado', '2022'),
+(5, 'Quinto Grado', '2022'),
+(6, 'Sexto Grado', '2022'),
+(7, 'Septimo Grado', '2022');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `materias`
+-- Estructura de tabla para la tabla `materias`
 --
 
-DROP TABLE IF EXISTS `materias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `materias` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `num_evaluaciones` int(11) NOT NULL,
-  `id_grado` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_id_grado_materias_idx` (`id_grado`),
-  CONSTRAINT `FK_id_grado_materias` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id_grado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `materias`
+-- Volcado de datos para la tabla `materias`
 --
 
-LOCK TABLES `materias` WRITE;
-/*!40000 ALTER TABLE `materias` DISABLE KEYS */;
-INSERT INTO `materias` VALUES (1,'Ciencia Salud y Medio Ambiente',4,1);
-/*!40000 ALTER TABLE `materias` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `materias` (`id`, `nombre`, `num_evaluaciones`, `id_grado`) VALUES
+(1, 'Ciencias Sociales', 4, 1),
+(2, 'Matemática', 3, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `notas`
+-- Estructura de tabla para la tabla `notas`
 --
 
-DROP TABLE IF EXISTS `notas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `notas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nota` decimal(10,2) DEFAULT NULL,
   `observaciones` varchar(100) DEFAULT NULL,
   `id_alumno` int(11) NOT NULL,
-  `id_materia` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_notas_id_alumno_idx` (`id_alumno`),
-  KEY `FK_notas_id_materia_idx` (`id_materia`),
-  CONSTRAINT `FK_notas_id_alumno` FOREIGN KEY (`id_alumno`) REFERENCES `alumnos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_notas_id_materia` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=224 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id_materia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `notas`
+-- Volcado de datos para la tabla `notas`
 --
 
-LOCK TABLES `notas` WRITE;
-/*!40000 ALTER TABLE `notas` DISABLE KEYS */;
-INSERT INTO `notas` VALUES (216,10.00,'Sin observaciones',3,1),(217,7.00,'Sin observaciones',3,1),(218,6.00,'Sin observaciones',3,1),(219,8.00,'Sin observaciones',3,1),(220,8.00,'',4,1),(221,9.00,'',4,1),(222,9.00,'',4,1),(223,6.00,'',4,1);
-/*!40000 ALTER TABLE `notas` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `notas` (`id`, `nota`, `observaciones`, `id_alumno`, `id_materia`) VALUES
+(216, '10.00', 'Sin observaciones', 3, 1),
+(217, '7.00', 'Sin observaciones', 3, 1),
+(218, '6.00', 'Sin observaciones', 3, 1),
+(219, '8.00', 'Sin observaciones', 3, 1),
+(220, '8.00', '', 4, 1),
+(221, '9.00', '', 4, 1),
+(222, '9.00', '', 4, 1),
+(223, '6.00', '', 4, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `secciones`
+-- Estructura de tabla para la tabla `secciones`
 --
 
-DROP TABLE IF EXISTS `secciones`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `secciones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` char(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(11) NOT NULL,
+  `nombre` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `secciones`
+-- Volcado de datos para la tabla `secciones`
 --
 
-LOCK TABLES `secciones` WRITE;
-/*!40000 ALTER TABLE `secciones` DISABLE KEYS */;
-INSERT INTO `secciones` VALUES (1,'A'),(2,'B'),(3,'C');
-/*!40000 ALTER TABLE `secciones` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `secciones` (`id`, `nombre`) VALUES
+(1, 'A'),
+(2, 'B');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
   `nombre` varchar(60) NOT NULL,
-  `rol` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `rol` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin123','Lennin','Administrador'),(2,'profesor','profe123','Jose','Profesor'),(3,'maria','maria123','Maria','Padre');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `users` (`id`, `username`, `password`, `nombre`, `rol`) VALUES
+(1, 'admin', 'admin123', 'Lennin', 'Administrador'),
+(2, 'profesor', 'profe123', 'Jose', 'Profesor'),
+(3, 'maria', 'maria123', 'Maria', 'Padre');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `alumnos`
+--
+ALTER TABLE `alumnos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_alumnos_idgrado_idx` (`id_grado`),
+  ADD KEY `FK_alumnos_idseccion_idx` (`id_seccion`);
+
+--
+-- Indices de la tabla `grados`
+--
+ALTER TABLE `grados`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `materias`
+--
+ALTER TABLE `materias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_id_grado_materias_idx` (`id_grado`);
+
+--
+-- Indices de la tabla `notas`
+--
+ALTER TABLE `notas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_notas_id_alumno_idx` (`id_alumno`),
+  ADD KEY `FK_notas_id_materia_idx` (`id_materia`);
+
+--
+-- Indices de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `alumnos`
+--
+ALTER TABLE `alumnos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `grados`
+--
+ALTER TABLE `grados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `materias`
+--
+ALTER TABLE `materias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `notas`
+--
+ALTER TABLE `notas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+
+--
+-- AUTO_INCREMENT de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `alumnos`
+--
+ALTER TABLE `alumnos`
+  ADD CONSTRAINT `FK_alumnos_idgrado` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_alumnos_idseccion` FOREIGN KEY (`id_seccion`) REFERENCES `secciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `materias`
+--
+ALTER TABLE `materias`
+  ADD CONSTRAINT `FK_id_grado_materias` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `notas`
+--
+ALTER TABLE `notas`
+  ADD CONSTRAINT `FK_notas_id_alumno` FOREIGN KEY (`id_alumno`) REFERENCES `alumnos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_notas_id_materia` FOREIGN KEY (`id_materia`) REFERENCES `materias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-09-15 16:10:16

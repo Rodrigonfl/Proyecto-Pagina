@@ -96,7 +96,7 @@ if(isset($_GET['id'])) {
 </div>
 
 <footer>
-    <p>Derechos reservados ETN 26 DE 6 &copy; 2022</p>
+    <p>Derechos reservados &copy; 2020</p>
 </footer>
 
 </body>

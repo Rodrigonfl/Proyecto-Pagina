@@ -17,13 +17,13 @@ $grados = $grados->fetchAll();
 <html>
 <head>
 <title>Inicio | Registro de Notas</title>
-    <meta name="description" content="Registro de Notas del Centro Escolar Profesor Lennin" />
+    <meta name="description" content="Registro de Notas Escuela Paul Groussac" />
     <link rel="stylesheet" href="css/style.css" />
 
 </head>
 <body>
 <div class="header">
-        <h1>Registro de Notas - Centro Escolar "Profe Lennin"</h1>
+        <h1>Registro de Notas - Escuela "Paul Groussac"</h1>
         <h3>Usuario:  <?php echo $_SESSION["username"] ?></h3>
 </div>
 <nav>
@@ -48,7 +48,7 @@ $grados = $grados->fetchAll();
                 <label>Apellidos</label><br>
                 <input type="text" required name="apellidos" maxlength="45">
                 <br><br>
-                <label>No de Lista</label><br>
+                <label>N° de Lista</label><br>
                 <input type="number" min="1" class="number" name="numlista">
                 <br><br>
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
@@ -87,7 +87,7 @@ $grados = $grados->fetchAll();
 </div>
 
 <footer>
-    <p>Derechos reservados ETN 26 DE 6 &copy; 2022</p>
+    <p>Derechos reservados &copy; 2022</p>
 </footer>
 
 </body>

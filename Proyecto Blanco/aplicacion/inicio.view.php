@@ -46,7 +46,7 @@ permisos($permisos);
 
 <footer>
 
-    <p>Derechos reservados &copy; 2020</p>
+    <p>Derechos reservados ETN26 DE 6 &copy; 2022</p>
 </footer>
 
 </body>

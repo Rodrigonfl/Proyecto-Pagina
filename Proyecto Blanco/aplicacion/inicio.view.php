@@ -24,6 +24,7 @@ permisos($permisos);
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
+        <li><a href="registro.view.php">Registro</a> </li>
         <li class="right"><a href="logout.php">Salir</a> </li>
 
     </ul>

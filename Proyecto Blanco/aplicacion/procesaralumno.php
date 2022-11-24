@@ -13,15 +13,23 @@ else {
     $idgrado = htmlentities($_POST['grado']);
     $idseccion = htmlentities($_POST['seccion']);
 
+
     //insertar es el nombre del boton guardar que esta en el archivo alumnos.view.php
     if (isset($_POST['insertar'])){
+
+        $target_dir = "imagenes/";
+        $target_filename = $nombres . ".png";
+        $target_file = $target_dir . $target_filename;
+    
+        move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file);
 
         $result = $conn->query("insert into alumnos (num_lista, nombres, apellidos, genero, id_grado, id_seccion) values ('$numlista', '$nombres', '$apellidos', '$genero', '$idgrado','$idseccion' )");
         if (isset($result)) {
             header('location:alumnos.view.php?info=1');
         } else {
             header('location:alumnos.view.php?err=1');
-        }// validación de registro
+        }
+        // validación de registro
 
     //sino boton modificar que esta en el archivo alumnoedit.view.php
     }else if (isset($_POST['modificar'])) {

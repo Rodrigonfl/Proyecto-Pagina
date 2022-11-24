@@ -33,6 +33,7 @@ $grados = $grados->fetchAll();
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
+        <li><a href="registro.view.php">Registro</a> </li>
         <li class="right"><a href="logout.php">Salir</a> </li>
 
     </ul>
@@ -41,7 +42,7 @@ $grados = $grados->fetchAll();
 <div class="body">
     <div class="panel">
             <h4>Registro de Alumnos</h4>
-            <form method="post" class="form" action="procesaralumno.php">
+            <form method="post" class="form" action="procesaralumno.php" enctype="multipart/form-data">
                 <label>Nombres</label><br>
                 <input type="text" required name="nombres" maxlength="45">
                 <br>
@@ -50,6 +51,12 @@ $grados = $grados->fetchAll();
                 <br><br>
                 <label>N° de Lista</label><br>
                 <input type="number" min="1" class="number" name="numlista">
+                <br><br>
+                <label>Imagen de alumno</label><br>
+                <input type="file" class="number" name="imagen" accept="image/png" required type=file>
+                <br><br>
+                <label>Tag</label><br>
+                <input type="text" class="number" name="tag">
                 <br><br>
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
                 <input type="radio" name="genero" required value="F"> Femenino

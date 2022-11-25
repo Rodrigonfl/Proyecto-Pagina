@@ -1,0 +1,69 @@
+<?php
+if(!$_POST)
+{
+    header('location: alumnos.view.php');
+}
+else 
+{
+    //incluimos el archivo funciones que tiene la conexion
+    require 'functions.php';
+	
+
+	
+    //Recuperamos los valores que vamos a llenar en la BD
+    $nombres = htmlentities($_POST ['nombres']);
+    $apellidos = htmlentities($_POST ['apellidos']);
+    $genero = htmlentities($_POST['genero']);
+    $numlista = htmlentities($_POST['numlista']);	
+    $idgrado = htmlentities($_POST['grado']);
+    $idseccion = htmlentities($_POST['seccion']);
+
+    //insertar es el nombre del boton guardar que esta en el archivo alumnos.view.php
+    if (isset($_POST['insertar']))
+	{
+
+        $target_dir = "imagenes/";
+        $target_filename = $nombres . ".png";
+        $target_file = $target_dir . $target_filename;
+    
+        move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file);
+
+
+function generateRandomString($length = 4) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+		$tag = generateRandomString();
+		
+        $result = $conn->query("insert into alumnos (num_lista, nombres, apellidos, genero, id_grado, id_seccion, tag) values ('$numlista', '$nombres', '$apellidos', '$genero', '$idgrado','$idseccion', '$tag' )");
+        if (isset($result)) 
+		{
+            header('location:alumnos.view.php?info=1');
+        } 
+		else 
+		{
+            header('location:alumnos.view.php?err=1');
+        }
+        // validación de registro
+
+    //sino boton modificar que esta en el archivo alumnoedit.view.php
+    }
+	else if (isset($_POST['modificar'])) 
+	{
+        //capturamos el id alumnos a modificar
+            $id_alumno = htmlentities($_POST['id']);
+            $result = $conn->query("update alumnos set num_lista = '$numlista', nombres = '$nombres', apellidos = '$apellidos', genero = '$genero',id_grado = '$idgrado', id_seccion = '$idseccion' where id = " . $id_alumno);
+            if (isset($result)) {
+                header('location:alumnoedit.view.php?id=' . $id_alumno . '&info=1');
+            } else {
+                header('location:alumnoedit.view.php?id=' . $id_alumno . '&err=1');
+            }// validación de registro
+    }
+
+}
+

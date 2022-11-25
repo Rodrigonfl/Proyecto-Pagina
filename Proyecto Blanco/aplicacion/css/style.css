@@ -73,6 +73,12 @@ footer p{
     margin-top: 4px;
 }
 
+.img{
+	width: 2%;
+	
+	
+}
+
 button, .btn-link{
     padding: 14px;
     border-radius:4px;

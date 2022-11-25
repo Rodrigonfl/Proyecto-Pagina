@@ -34,6 +34,7 @@ $grados = $grados->fetchAll();
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         <li><a href="registro.view.php">Registro</a> </li>
+		<li><a href="eliminacion.view.php">Eliminacion</a> </li>
         <li class="right"><a href="logout.php">Salir</a> </li>
 
     </ul>
@@ -54,10 +55,7 @@ $grados = $grados->fetchAll();
                 <br><br>
                 <label>Imagen de alumno</label><br>
                 <input type="file" class="number" name="imagen" accept="image/png" required type=file>
-                <br><br>
-                <label>Tag</label><br>
-                <input type="text" class="number" name="tag">
-                <br><br>
+                <br><br>            
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
                 <input type="radio" name="genero" required value="F"> Femenino
                 <br><br>

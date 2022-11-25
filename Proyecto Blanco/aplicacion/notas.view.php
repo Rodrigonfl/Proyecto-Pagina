@@ -40,6 +40,7 @@ $secciones = $secciones->fetchAll();
         <li class="active"><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         <li><a href="registro.view.php">Registro</a> </li>
+		<li><a href="eliminacion.view.php">Eliminacion</a> </li>
         <li class="right"><a href="logout.php">Salir</a> </li>
 
     </ul>

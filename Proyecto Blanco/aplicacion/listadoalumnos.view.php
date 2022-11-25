@@ -29,6 +29,7 @@ $alumnos = $alumnos->fetchAll();
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         <li><a href="registro.view.php">Registro</a> </li>
+		<li><a href="eliminacion.view.php">Eliminacion</a> </li>
         <li class="right"><a href="logout.php">Salir</a> </li>
 
     </ul>
@@ -39,19 +40,16 @@ $alumnos = $alumnos->fetchAll();
             <h4>Listado de Alumnos</h4>
             <table class="table" cellspacing="0" cellpadding="0">
                 <tr>
-                    <th>No de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Grado</th><th>Seccion</th>
-                    <th>Tag</th>
-                    <th>Imagen</th>
-                    <th>Editar</th><th>Eliminar</th>
+                    <th>N° de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Grado</th><th>Seccion</th>
+                    <th>Foto</th>
+                    <th>Eliminar</th>
                 </tr>
                 <?php foreach ($alumnos as $alumno) :?>
                 <tr>
                     <td align="center"><?php echo $alumno['num_lista'] ?></td><td><?php echo $alumno['apellidos'] ?></td>
                     <td><?php echo $alumno['nombres'] ?></td><td align="center"><?php echo $alumno['genero'] ?></td>
                     <td align="center"><?php echo $alumno['grado'] ?></td><td align="center"><?php echo $alumno['seccion'] ?></td>
-                    <td> <p><?php echo $alumno['tag'] ?></p> </td>
-                    <td> <img src="imagenes/<?php echo $alumno['nombres'] ?>.png" alt=""> </td>
-                    <td><a href="alumnoedit.view.php?id=<?php echo $alumno['id'] ?>">Editar</a> </td>
+                    <td> <img src="imagenes/<?php echo $alumno['nombres'] ?>.png" alt="" width="100" height="100"> </td>
                     <td><a href="alumnodelete.php?id=<?php echo $alumno['id'] ?>">Eliminar</a> </td>
                 </tr>
                 <?php endforeach;?>
